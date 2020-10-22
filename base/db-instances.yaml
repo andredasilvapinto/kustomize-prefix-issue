@@ -1,0 +1,20 @@
+apiVersion: sql.cnrm.cloud.google.com/v1beta1
+kind: SQLInstance
+metadata:
+  name: the-primary
+  namespace: the-namespace
+spec:
+  databaseVersion: POSTGRES_10
+  region: europe-west1
+---
+
+apiVersion: sql.cnrm.cloud.google.com/v1beta1
+kind: SQLInstance
+metadata:
+  name: the-replica
+  namespace: the-namespace
+spec:
+  databaseVersion: POSTGRES_10
+  region: europe-west1
+  masterInstanceRef:
+    name: the-primary
